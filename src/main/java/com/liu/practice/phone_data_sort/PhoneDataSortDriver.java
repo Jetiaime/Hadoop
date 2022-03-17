@@ -1,6 +1,7 @@
 package com.liu.practice.phone_data_sort;
 
 import com.liu.practice.phone_data.PhoneDataBean;
+import com.liu.practice.phone_data.PhoneDataPartitioner;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -21,6 +22,9 @@ public class PhoneDataSortDriver {
 
         job.setMapOutputKeyClass(PhoneDataBean.class);
         job.setMapOutputValueClass(Text.class);
+
+        job.setPartitionerClass(PhoneDataSortPartitioner.class);
+        job.setNumReduceTasks(5);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(PhoneDataBean.class);
