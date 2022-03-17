@@ -1,4 +1,4 @@
-package com.liu.practice;
+package com.liu.practice.wordcount;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
