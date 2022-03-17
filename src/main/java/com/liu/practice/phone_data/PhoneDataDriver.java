@@ -18,6 +18,9 @@ public class PhoneDataDriver {
         job.setMapperClass(PhoneDataMapper.class);
         job.setReducerClass(PhoneDataReducer.class);
 
+        job.setPartitionerClass(PhoneDataPartitioner.class);
+        job.setNumReduceTasks(5);
+
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(PhoneDataBean.class);
 
