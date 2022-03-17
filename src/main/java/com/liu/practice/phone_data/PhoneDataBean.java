@@ -1,12 +1,13 @@
 package com.liu.practice.phone_data;
 
 import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class PhoneDataBean implements Writable {
+public class PhoneDataBean implements WritableComparable<PhoneDataBean> {
 
     private long upFlow;
     private long downFlow;
@@ -56,5 +57,10 @@ public class PhoneDataBean implements Writable {
     @Override
     public String toString() {
         return upFlow + "\t" + downFlow + "\t" + getSumFlow();
+    }
+
+    @Override
+    public int compareTo(PhoneDataBean o) {
+        return -(int) (this.getSumFlow() - o.getSumFlow());
     }
 }
